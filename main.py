@@ -2,9 +2,10 @@ import tkinter as tk
 import sqlite3
 import pandas as pd
 
+"""
 conexao = sqlite3.connect('banco_clientes.db')
 
-# mensageiro/cursor
+# O cursor é usado para executar comandos SQL no banco de dados
 c = conexao.cursor()
 
 # executar uma ação dentro do banco
@@ -16,8 +17,9 @@ c.execute('''CREATE TABLE clientes (
     )
 ''')
 
-# abrir a porta
+# commit (confirmação) das alterações no banco de dados
 conexao.commit()
 
-# fechando a conexão
+# fecha a conexão com o banco de dados SQLite
 conexao.close()
+"""
