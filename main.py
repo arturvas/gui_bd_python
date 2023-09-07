@@ -25,6 +25,32 @@ conexao.close()
 """
 
 
+def cadastrar_cliente():
+    conexao = sqlite3.connect('banco_clientes.db')
+
+    # O cursor é usado para executar comandos SQL no banco de dados
+    c = conexao.cursor()
+
+    # executar uma ação dentro do banco
+    c.execute('INSERT INTO clientes VALUES (:nome, :sobrenome, :email, :telefone)',
+              {
+                  'nome':entry_nome.get(),
+                  'sobrenome':entry_sobrenome.get(),
+                  'email':entry_email.get(),
+                  'telefone':entry_telefone.get()
+              })
+
+    # commit (confirmação) das alterações no banco de dados
+    conexao.commit()
+
+    # fecha a conexão com o banco de dados SQLite
+    conexao.close()
+
+
+def exportar_clientes():
+    pass
+
+
 # criação da interface gráfica
 janela = tk.Tk()
 janela.title('Ferramenta de Cadastro de Clientes')
@@ -60,10 +86,10 @@ entry_telefone.grid(row=3, column=1, padx=10, pady=10)
 
 # Botões
 
-botao_cadastrar = tk.Button(janela, text='Cadastrar Cliente', command= cadastrar_clientes)
-botao_cadastrar.grid(row=4, column=0, padx=10, pady=10)
+botao_cadastrar = tk.Button(janela, text='Cadastrar Cliente', command=cadastrar_cliente)
+botao_cadastrar.grid(row=4, column=0, padx=10, pady=10, columnspan=2, ipadx=80)
 
-botao_exportar = tk.Button(janela, text='Exportar Base de Clientes', command= exporta_clientes)
-botao_exportar.grid(row=5, column=0, padx=10, pady=10)
+botao_exportar = tk.Button(janela, text='Exportar Base de Clientes', command=exportar_clientes)
+botao_exportar.grid(row=5, column=0, padx=10, pady=10, columnspan=2, ipadx=54)
 
 janela.mainloop()
