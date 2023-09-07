@@ -46,6 +46,12 @@ def cadastrar_cliente():
     # fecha a conexão com o banco de dados SQLite
     conexao.close()
 
+    # apagar os campos após preencher
+    entry_nome.delete(0, 'end')
+    entry_sobrenome.delete(0, 'end')
+    entry_email.delete(0, 'end')
+    entry_telefone.delete(0, 'end')
+
 
 def exportar_clientes():
     pass
